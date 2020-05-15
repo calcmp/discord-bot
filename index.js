@@ -1,9 +1,8 @@
-const { Client, MessageEmbed } = require("discord.js");
+const { Client } = require("discord.js");
 const { PREFIX, DISCORD_BOT_TOKEN } = require("./config.json");
 const { poke } = require("./src/commands/poke.js");
 
 const client = new Client();
-const msgEmbed = new MessageEmbed();
 
 client.once("ready", () => {
   console.log("Ready!");
@@ -21,7 +20,7 @@ client.on("message", (message) => {
     case "ping":
       message.channel.send("Pong.");
     case "poke":
-      poke(message, client, msgEmbed, args);
+      poke(message, client, args);
     default:
       return;
   }

@@ -1,16 +1,14 @@
-const poke = (message, client, msgEmbed, args) => {
-  if (!args.length) {
+const poke = async (message, client, args) => {
+  if (!args.length || !message.mentions.members.first()) {
     return message.channel.send(
       "Type the person who you want to poke using '@'."
     );
   } else {
-    const user = message.mentions.users;
-    console.log(user);
+    const userMentionedId = message.mentions.users.entries().next().value[0];
+    const messageAuthor = message.author.username;
 
-    console.log(user.entries().next().value[0]);
-
-    let cli = client.users.fetch(user.entries().next().value[0]);
-    console.log(cli);
+    const user = await client.users.fetch(userMentionedId);
+    user.send(`${messageAuthor} has poked you!`);
 
     message.channel.send(`You poked ${args[0]}`);
   }
