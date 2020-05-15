@@ -1,4 +1,4 @@
-const poke = async (message, client, args) => {
+const poke = (message, client, args) => {
   const messageAuthor = message.author.username;
   const userIdsMentioned = [];
   const usernamesMentioned = [];
