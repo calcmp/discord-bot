@@ -3,7 +3,7 @@ const fetch = require("node-fetch");
 const weather = async (message, key, args) => {
   if (!args.length) {
     return message.author.send(
-      "Enter a location with '!weather wolverhampton'"
+      "Enter a location with '!weather wolverhampton'."
     );
   } else {
     const api_url = `http://api.openweathermap.org/data/2.5/weather?q=${args}&appid=${key}`;
@@ -29,11 +29,11 @@ const weather = async (message, key, args) => {
     }
 
     const msg = `In ${
-      args[0].charAt(0) + args[0].substring(1).toLowerCase()
+      args[0].charAt(0).toUpperCase() + args[0].slice(1)
     } it is ${convertToCelsius(json.main.temp)}°C and ${weatherDesc}.
 It feels like ${convertToCelsius(json.main.feels_like)}°C.
-The wind speed is ${(json.wind.speed * 2.237).toFixed(1)}mph.
-The cloudyness is ${json.clouds.all}%`;
+${(json.wind.speed * 2.237).toFixed(1)}mph wind speed.
+Cloudyness ${json.clouds.all}%`;
 
     return message.channel.send(msg);
   }
