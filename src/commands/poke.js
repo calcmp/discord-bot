@@ -5,7 +5,7 @@ const poke = async (message, client, args) => {
 
   if (!args.length || message.content.includes("@")) {
     return message.author.send(
-      "Type the person who you want to poke without '@'."
+      "Type the person who you want to poke without '@'. You can poke multiple people like this '!poke jackie elton 50cent'."
     );
   } else {
     client.users.cache.forEach((user) => {
