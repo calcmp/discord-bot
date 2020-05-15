@@ -1,6 +1,7 @@
 const { Client } = require("discord.js");
-const { PREFIX, DISCORD_BOT_TOKEN } = require("./config.json");
+const { OWM_API_KEY, DISCORD_BOT_TOKEN, PREFIX } = require("./config.json");
 const { poke } = require("./src/commands/poke.js");
+const { weather } = require("./src/commands/weather.js");
 
 const client = new Client();
 
@@ -21,6 +22,8 @@ client.on("message", (message) => {
       message.channel.send("Pong.");
     case "poke":
       poke(message, client, args);
+    case "weather":
+      weather(message, OWM_API_KEY, client, args);
     default:
       return;
   }
