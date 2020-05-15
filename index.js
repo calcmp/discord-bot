@@ -20,12 +20,16 @@ client.on("message", (message) => {
   switch (command) {
     case "ping":
       message.channel.send("Pong.");
+      break;
     case "help":
       message.channel.send("'!ping' '!poke elton' '!weather wolverhampton'");
+      break;
     case "poke":
       poke(message, client, args);
+      break;
     case "weather":
       weather(message, OWM_API_KEY, args);
+      break;
     default:
       return;
   }

@@ -15,25 +15,27 @@ const weather = async (message, key, args) => {
     }
 
     const desc = json.weather[0].description;
-
-    let weatherDesc = desc.toUpperCase();
+    let weatherDesc = desc;
+    console.log(desc);
     switch (desc) {
       case "broken clouds":
         weatherDesc = "mostly cloudy";
+        break;
       case "overcast clouds":
         weatherDesc = "completely fucking cloudy";
+        break;
       default:
         break;
     }
 
-    return message.channel.send(
-      `In ${
-        args[0].charAt(0).toUpperCase() + args[0].slice(1)
-      } it is ${convertToCelsius(json.main.temp)}°C and ${weatherDesc}.
+    const msg = `In ${
+      args[0].charAt(0) + args[0].substring(1).toLowerCase()
+    } it is ${convertToCelsius(json.main.temp)}°C and ${weatherDesc}.
 It feels like ${convertToCelsius(json.main.feels_like)}°C.
 The wind speed is ${(json.wind.speed * 2.237).toFixed(1)}mph.
-The cloudyness is ${json.clouds.all}%`
-    );
+The cloudyness is ${json.clouds.all}%`;
+
+    return message.channel.send(msg);
   }
 };
 
