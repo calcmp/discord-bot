@@ -18,6 +18,15 @@ const weather = async (message, key, args) => {
     let weatherDesc = desc;
     console.log(desc);
     switch (desc) {
+      case "light rain":
+        weatherDesc = "it's lightly raining";
+        break;
+      case "few clouds":
+        weatherDesc = "there's hardly any clouds";
+        break;
+      case "broken clouds":
+        weatherDesc = "mostly cloudy";
+        break;
       case "broken clouds":
         weatherDesc = "mostly cloudy";
         break;
